@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Load FAQ CSV
 data = pd.read_csv("tit_faq.csv")
-questions = data["question"].tolist()
+questions = data["question"].tolist() 
 answers = data["answer"].tolist()
 
 # Convert questions into vectors
