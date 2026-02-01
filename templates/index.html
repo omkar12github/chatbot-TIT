@@ -1,42 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Simple FAQ Chatbot</title>
-    <style>
-        body {
-            background: #ce7777;
-            font-family: Arial;
-            padding: 40px;
-        }
-        .box {
-            width: 400px;
-            margin: auto;
-            background: rgb(211, 164, 164);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px #a86565;
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        button {
-            background: #28507a;
-            border: none;
-            color: rgb(228, 223, 223);
-            cursor: pointer;
-        }
-        .reply {
-            margin-top: 15px;
-            background: #dce1e9;
-            padding: 12px;
-            border-left: 4px solid #007bff;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>TIT Chatbot</title>
+
+    <!-- CSs -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
     <div class="box">
         <h2>TIT Chatbot</h2>
 
@@ -45,11 +17,22 @@
             <button type="submit">Send</button>
         </form>
 
-        {% if reply %}
-        <div class="reply">
-            <strong>Bot:</strong> {{ reply }}
-        </div>
-        {% endif %}
+        {% if user_msg %}
+<div class="chat user">
+    <strong>You:</strong> {{ user_msg }}
+</div>
+{% endif %}
+
+{% if reply %}
+<div class="chat bot">
+    <strong>Bot:</strong> {{ reply }}
+</div>
+{% endif %}
+
     </div>
+
+    <!-- JS 연결 -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </body>
 </html>

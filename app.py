@@ -29,11 +29,19 @@ def chatbot_response(user_input):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    user_msg = ""          # ✅ ADD
     bot_reply = ""
+
     if request.method == "POST":
-        user_msg = request.form.get("message")
+        user_msg = request.form.get("message")     # ✅ KEEP user message
         bot_reply = chatbot_response(user_msg)
-    return render_template("index.html", reply=bot_reply)
+
+    return render_template(
+        "index.html",
+        reply=bot_reply,
+        user_msg=user_msg      # ✅ SEND user message to HTML
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
